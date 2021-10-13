@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--android.support.percent.PercentRelativeLayout-->
+
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.example.phuc.iotdashboard.Temperature">
+
+
+    <ImageView
+        android:src="@drawable/logo"
+        android:scaleType="fitCenter"
+        app:layout_widthPercent="10%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="0%"
+        app:layout_marginTopPercent="0%"
+
+        />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/LineChart"></com.github.mikephil.charting.charts.LineChart>
+
+    <TextView
+        android:id="@+id/Namechart"
+        app:layout_widthPercent="60%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="20%"
+        app:layout_marginTopPercent="53.5%"
+
+        android:textSize="15dp"
+        android:textStyle="italic"
+        android:textColor="#000000"
+        android:gravity="center"
+
+        android:text="Biểu đồ nhiệt độ 12h qua"
+        />
+
+    <TextView
+        app:layout_widthPercent="40%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="26%"
+        app:layout_marginTopPercent="70%"
+
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#0000ff"
+        android:gravity="center"
+
+        android:text="Nhiệt độ hiện tại:"
+        />
+
+    <!--android:background="#ff0000"-->
+    <TextView
+        android:id="@+id/Temperature"
+        app:layout_widthPercent="30%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="30%"
+        app:layout_marginTopPercent="75%"
+
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"
+
+        android:text="28°C"
+        />
+
+
+
+    <ImageView
+        android:src="@drawable/location_on"
+        android:scaleType="fitCenter"
+        app:layout_widthPercent="10%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="15%"
+        app:layout_marginTopPercent="85%"
+
+        />
+
+    <TextView
+        android:id="@+id/location"
+        app:layout_widthPercent="50%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="23%"
+        app:layout_marginTopPercent="86.5%"
+
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#000000"
+        android:gravity="center"
+
+        android:text="Hồ Chí Minh, Việt Nam"
+        />
+
+</android.support.percent.PercentRelativeLayout>

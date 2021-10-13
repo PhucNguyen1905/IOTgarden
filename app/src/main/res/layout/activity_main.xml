@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.example.phuc.iotdashboard.MainActivity">
+
+    <TextView
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="0%"
+        app:layout_marginTopPercent="0%"
+        android:background="#B1E693"
+        android:textColor="#444941"
+        />
+    <ImageView
+        android:src="@drawable/logo"
+        android:scaleType="fitXY"
+
+        app:layout_widthPercent="12%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="0%"
+        app:layout_marginTopPercent="0%"
+        />
+    <TextView
+    app:layout_widthPercent="90%"
+    app:layout_heightPercent="10%"
+    app:layout_marginStartPercent="3%"
+    app:layout_marginTopPercent="0%"
+
+    android:textSize="30dp"
+    android:textColor="#002366"
+    android:gravity="center"
+
+    android:text="Garden Status"
+    android:id="@+id/textView4" />
+
+
+    <!--TEMPERATURE-->
+    <TextView
+    app:layout_widthPercent="40%"
+    app:layout_heightPercent="17%"
+    app:layout_marginStartPercent="7%"
+    app:layout_marginTopPercent="12%"
+    android:background="@drawable/bg_button"
+        android:id="@+id/textView3" />
+    <Button
+        android:id="@+id/tempButton"
+        android:background="@drawable/tempicon"
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="26%"
+        app:layout_marginTopPercent="18%"
+        />
+
+    <TextView
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="12%"
+        app:layout_marginTopPercent="10%"
+        android:fontFamily="monospace"
+
+
+        android:textSize="15dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Temperature" />
+    <TextView
+        android:id="@+id/txtTemperature"
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="7%"
+        app:layout_marginTopPercent="17%"
+        android:fontFamily="monospace"
+
+
+        android:textSize="20dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="30" />
+
+
+    <!--HUMIDITY-->
+    <TextView
+
+        android:background="@drawable/bg_button"
+        app:layout_heightPercent="17%"
+        app:layout_marginStartPercent="54%"
+        app:layout_marginTopPercent="12%"
+        app:layout_widthPercent="40%" />
+
+    <Button
+        android:id="@+id/humiButton"
+        android:background="@drawable/humiicon"
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="74%"
+        app:layout_marginTopPercent="18%"
+        />
+
+    <TextView
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="59%"
+        app:layout_marginTopPercent="10%"
+        android:fontFamily="monospace"
+
+        android:textSize="15dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Humidity" />
+    <TextView
+        android:id="@+id/txtHumidity"
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="54%"
+        app:layout_marginTopPercent="17%"
+        android:fontFamily="monospace"
+
+        android:textSize="20dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="40" />
+
+    <!--MOISTURE-->
+    <TextView
+        app:layout_widthPercent="40%"
+        app:layout_heightPercent="17%"
+        app:layout_marginStartPercent="7%"
+        app:layout_marginTopPercent="35%"
+        android:background="@drawable/bg_button"
+        />
+    <Button
+        android:id="@+id/moisButton"
+        android:background="@drawable/moisicon"
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="28%"
+        app:layout_marginTopPercent="41%"
+        />
+
+    <TextView
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="12%"
+        app:layout_marginTopPercent="33%"
+        android:fontFamily="monospace"
+
+
+        android:textSize="15dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Moisture" />
+    <TextView
+        android:id="@+id/txtMoisture"
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="7%"
+        app:layout_marginTopPercent="39%"
+        android:fontFamily="monospace"
+
+
+        android:textSize="20dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="82" />
+
+    <!--WIND SPEED-->
+    <TextView
+        android:background="@drawable/bg_button"
+        app:layout_heightPercent="17%"
+        app:layout_marginStartPercent="54%"
+        app:layout_marginTopPercent="35%"
+        app:layout_widthPercent="40%" />
+
+    <Button
+        android:id="@+id/windButton"
+        android:background="@drawable/windicon"
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="74%"
+        app:layout_marginTopPercent="41%"
+        />
+
+    <TextView
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="60%"
+        app:layout_marginTopPercent="33%"
+        android:fontFamily="monospace"
+
+        android:textSize="15dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Wind Speed" />
+    <TextView
+        android:id="@+id/txtWindSpeed"
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="54%"
+        app:layout_marginTopPercent="39%"
+        android:fontFamily="monospace"
+
+        android:textSize="20dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="33" />
+
+    <!--&lt;!&ndash;WIND SPEED&ndash;&gt;-->
+    <!--<TextView-->
+    <!--app:layout_widthPercent="40%"-->
+    <!--app:layout_heightPercent="17%"-->
+    <!--app:layout_marginStartPercent="7%"-->
+    <!--app:layout_marginTopPercent="57%"-->
+    <!--android:background="@drawable/bg_button"-->
+    <!--/>-->
+    <!--<TextView-->
+    <!--android:background="@drawable/tempicon"-->
+    <!--app:layout_widthPercent="15%"-->
+    <!--app:layout_heightPercent="8%"-->
+    <!--app:layout_marginStartPercent="8%"-->
+    <!--app:layout_marginTopPercent="62%"-->
+    <!--/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtWind"-->
+    <!--app:layout_widthPercent="28%"-->
+    <!--app:layout_heightPercent="10%"-->
+    <!--app:layout_marginStartPercent="12%"-->
+    <!--app:layout_marginTopPercent="55%"-->
+    <!--android:fontFamily="monospace"-->
+
+
+    <!--android:textSize="15dp"-->
+    <!--android:textColor="#F3F1F5"-->
+    <!--android:textStyle="bold"-->
+    <!--android:gravity="center"-->
+
+    <!--android:text="Wind Speed" />-->
+
+
+    <!--&lt;!&ndash;RAIN PROBABILITY&ndash;&gt;-->
+    <!--<TextView-->
+    <!--android:background="@drawable/bg_button"-->
+    <!--app:layout_heightPercent="17%"-->
+    <!--app:layout_marginStartPercent="54%"-->
+    <!--app:layout_marginTopPercent="57%"-->
+    <!--app:layout_widthPercent="40%" />-->
+
+    <!--<TextView-->
+    <!--android:background="@drawable/humiicon"-->
+    <!--app:layout_widthPercent="10%"-->
+    <!--app:layout_heightPercent="5%"-->
+    <!--app:layout_marginStartPercent="58%"-->
+    <!--app:layout_marginTopPercent="65%"-->
+    <!--/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/txtRain"-->
+    <!--app:layout_widthPercent="28%"-->
+    <!--app:layout_heightPercent="10%"-->
+    <!--app:layout_marginStartPercent="59%"-->
+    <!--app:layout_marginTopPercent="56%"-->
+    <!--android:fontFamily="monospace"-->
+
+    <!--android:textSize="15dp"-->
+    <!--android:textColor="#F3F1F5"-->
+    <!--android:textStyle="bold"-->
+    <!--android:gravity="center"-->
+
+    <!--android:text="Rain probability" />-->
+
+
+    <!--PUMP-->
+    <TextView
+        android:background="@drawable/bg_button"
+        app:layout_heightPercent="15%"
+        app:layout_marginStartPercent="29%"
+        app:layout_marginTopPercent="55%"
+        app:layout_widthPercent="40%" />
+
+    <TextView
+        android:background="@drawable/pumpicon"
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="40%"
+        app:layout_marginTopPercent="61%"
+        />
+
+    <TextView
+        app:layout_widthPercent="28%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="35%"
+        app:layout_marginTopPercent="53%"
+        android:fontFamily="monospace"
+
+        android:textSize="15dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="PUMP" />
+
+    <Button
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="7%"
+        app:layout_marginStartPercent="17%"
+        app:layout_marginTopPercent="71%"
+        android:background="#87A7B3"
+        android:checked="false"
+        android:text="On"
+        android:textOff=""
+        android:textOn=""
+        />
+    <Button
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="7%"
+        app:layout_marginStartPercent="42%"
+        app:layout_marginTopPercent="71%"
+        android:background="#87A7B3"
+        android:checked="false"
+        android:text="Off"
+        android:textOff=""
+        android:textOn=""
+        />
+    <Button
+        app:layout_widthPercent="15%"
+        app:layout_heightPercent="7%"
+        app:layout_marginStartPercent="66%"
+        app:layout_marginTopPercent="71%"
+        android:background="#87A7B3"
+        android:checked="false"
+        android:text="Auto"
+        android:textOff=""
+        android:textOn=""
+        />
+
+
+    <!--LIGHT-->
+    <TextView
+        app:layout_widthPercent="40%"
+        app:layout_heightPercent="17%"
+        app:layout_marginStartPercent="7%"
+        app:layout_marginTopPercent="79%"
+        android:background="@drawable/bg_button"
+        />
+    <TextView
+        app:layout_widthPercent="32%"
+        app:layout_heightPercent="25%"
+        app:layout_marginStartPercent="11%"
+        app:layout_marginTopPercent="70%"
+        android:fontFamily="monospace"
+
+
+        android:textSize="20dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Light" />
+
+    <ToggleButton
+        android:id="@+id/btnLED"
+        app:layout_widthPercent="18%"
+        app:layout_heightPercent="9%"
+        app:layout_marginStartPercent="17%"
+        app:layout_marginTopPercent="86%"
+        android:background="@drawable/toggle_selector"
+        android:checked="false"
+        android:text=""
+        android:textOff=""
+        android:textOn="" />
+
+
+    <!--DOME-->
+    <TextView
+        app:layout_widthPercent="40%"
+        app:layout_heightPercent="17%"
+        app:layout_marginStartPercent="54%"
+        app:layout_marginTopPercent="79%"
+        android:background="@drawable/bg_button"
+        />
+    <TextView
+        app:layout_widthPercent="32%"
+        app:layout_heightPercent="25%"
+        app:layout_marginStartPercent="57%"
+        app:layout_marginTopPercent="70%"
+        android:fontFamily="monospace"
+
+
+        android:textSize="20dp"
+        android:textColor="#F3F1F5"
+        android:textStyle="bold"
+        android:gravity="center"
+
+        android:text="Dome" />
+
+    <ToggleButton
+        android:id="@+id/btnDOME"
+        app:layout_widthPercent="18%"
+        app:layout_heightPercent="8%"
+        app:layout_marginStartPercent="64%"
+        app:layout_marginTopPercent="86%"
+        android:background="@drawable/toggle_selector"
+        android:checked="false"
+        android:text=""
+        android:textOff=""
+        android:textOn="" />
+
+
+    <!--LIGHT SWITCH AT TOP-->
+    <ToggleButton
+        android:id="@+id/lightImg"
+        app:layout_widthPercent="20%"
+        app:layout_heightPercent="10%"
+        app:layout_marginStartPercent="78%"
+        app:layout_marginTopPercent="1%"
+        android:background="@drawable/light_switch"
+        android:checked="false"
+        />
+
+
+
+
+</android.support.percent.PercentRelativeLayout>
