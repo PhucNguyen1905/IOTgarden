@@ -9,13 +9,40 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.data.Entry;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.nio.charset.Charset;
+
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
+import java.util.StringJoiner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     Button tempButt;
     Button humiButt;
     Button moisButt;
+    String str = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +119,103 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String urlTemp = "https://io.adafruit.com/api/v2/PhucBKU/feeds/bbc-temp/data?limit=1";
+        String urlHumi = "https://io.adafruit.com/api/v2/PhucBKU/feeds/bbc-humidity/data?limit=1";
+        String urlMois = "https://io.adafruit.com/api/v2/PhucBKU/feeds/bbc-mois/data?limit=1";
+        String urlWind = "https://io.adafruit.com/api/v2/PhucBKU/feeds/bbc-wind/data?limit=1";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlTemp, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject object = response.getJSONObject(0);
+                            String value = object.getString("value");
+                            txtTemp.setText(value);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+
+        JsonArrayRequest jsonArrayRequestHumi = new JsonArrayRequest(Request.Method.GET, urlHumi, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject object = response.getJSONObject(0);
+                            String value = object.getString("value");
+                            txtHumi.setText(value);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequestHumi);
+
+        JsonArrayRequest jsonArrayRequestMois = new JsonArrayRequest(Request.Method.GET, urlMois, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject object = response.getJSONObject(0);
+                            String value = object.getString("value");
+                            txtMois.setText(value);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequestMois);
+
+        JsonArrayRequest jsonArrayRequestWind = new JsonArrayRequest(Request.Method.GET, urlWind, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject object = response.getJSONObject(0);
+                            String value = object.getString("value");
+                            txtWind.setText(value);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequestWind);
 
         startMQTT();
     }

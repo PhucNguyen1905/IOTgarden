@@ -10,8 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.YAxis;
@@ -23,10 +30,19 @@ import com.github.mikephil.charting.utils.Utils;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static java.lang.Float.parseFloat;
 
 
 public class Humidity extends AppCompatActivity{
@@ -37,6 +53,7 @@ public class Humidity extends AppCompatActivity{
     TextView txtTemp;
     ArrayList<Entry> yVals = new ArrayList<>();
     int count = 1;
+    String str = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +61,47 @@ public class Humidity extends AppCompatActivity{
         setContentView(R.layout.activity_humidity);
 
         txtTemp = findViewById(R.id.Temperature);
-        txtTemp.setText("30" + "%");
+
 
         /*for (int i = 0; i < 24; i++){
             int value = i%2==0?10:5;
             yVals.add(new Entry(i, value));
         }
         drawChart(yVals);*/
-        yVals.add(new Entry(0, 0));
-        drawChart(yVals);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        String url = "https://io.adafruit.com/api/v2/PhucBKU/feeds/bbc-humidity/data?limit=10";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for(int i=response.length()-1 ; i >=0 ;i--)
+                        {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                String value = object.getString("value");
+                                Entry tmp = new Entry(count,parseFloat(value));
+                                yVals.add(tmp);
+                                count = count+1;
+                                txtTemp.setText(value + "%");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        drawChart(yVals);
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Humidity.this,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+
         startMQTT();
     }
 

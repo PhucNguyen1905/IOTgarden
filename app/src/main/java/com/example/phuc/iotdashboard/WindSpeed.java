@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.mikephil.charting.charts.LineChart;
 
@@ -19,7 +21,27 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import static java.lang.Float.parseFloat;
+import android.widget.Toast;
+
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class WindSpeed extends AppCompatActivity {
 
@@ -29,6 +51,7 @@ public class WindSpeed extends AppCompatActivity {
     int count=0;
     int flag = 0;
     float speed2;
+    String str = "";
     ArrayList<Entry> yValues = new ArrayList<>();
     LineDataSet set1 = new LineDataSet(yValues,"Speed wind");
     @Override
@@ -46,7 +69,39 @@ public class WindSpeed extends AppCompatActivity {
         set1.setValueTextSize(20f);
         set1.setValueTextColor(Color.YELLOW);
 
-        drwawchart(0);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        String url = "https://io.adafruit.com/api/v2/PhucBKU/feeds/bbc-wind/data?limit=10";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for(int i=response.length()-1 ; i >=0 ;i--)
+                        {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                String value = object.getString("value");
+                                drwawchart(Integer.parseInt(value));
+                                speedwind.speedTo(Integer.parseInt(value),1000);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(WindSpeed.this,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+
+
         startMQTT();
 
     }
